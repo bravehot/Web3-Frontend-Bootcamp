@@ -2,6 +2,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Header, Faucet, Listing, Market, MyNFT } from "@/components";
 
 import { inter } from "@/context/font";
+import TotalNum from "@/components/TotalNum";
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
         <div className="flex-1 flex flex-col py-4">
           <div className="w-full flex flex-end items-end gap-2">
             <div className={`mr-auto text-2xl font-medium ${inter.className}`}>
-              Popular products
+              Popular products <TotalNum />
             </div>
             <Listing />
             <Faucet />
@@ -20,7 +21,7 @@ export default function Home() {
 
           <div className="w-full flex-1 mt-8">
             <Tabs defaultValue="market" className="w-full">
-              <TabsList className="w-[400px] flex justify-between">
+              <TabsList className="w-[400px] flex justify-between mb-8">
                 <TabsTrigger className="w-1/2" value="market">
                   Market
                 </TabsTrigger>

@@ -10,27 +10,15 @@ import { abi } from "@/abi/NFTMarket";
 import type { NFTInter } from "@/@types";
 
 const Market: React.FC = () => {
-  const totalResult = useReadContract({
-    abi,
-    address: process.env.NEXT_PUBLIC_MARKET_ADDRESS as any,
-    functionName: "getListedCount",
-  });
-
   const listItemResult = useReadContract({
     abi,
     address: process.env.NEXT_PUBLIC_MARKET_ADDRESS as any,
     functionName: "getListedItem",
   });
 
-  const totalCount = useMemo(() => {
-    const count = serialize(totalResult.data);
-    if (isEmpty(count)) return 0;
-
-    return JSON.parse(count).value;
-  }, [totalResult]);
-
   const listItem = useMemo<NFTInter[]>(() => {
     if (isEmpty(listItemResult.data)) return [];
+    console.log("listItemResult: ", listItemResult);
 
     if (Array.isArray(listItemResult.data)) {
       return listItemResult.data.map((item) => ({
@@ -50,7 +38,6 @@ const Market: React.FC = () => {
           <NFTItem key={index} tokenId={item.tokenId} info={item} />
         ))}
       </div>
-      <div>Total: {totalCount}</div>
     </div>
   );
 };

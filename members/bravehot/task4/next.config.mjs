@@ -7,6 +7,10 @@ const nextConfig = {
         hostname: "black-many-mandrill-971.mypinata.cloud",
         pathname: "/ipfs/**",
       },
+      {
+        protocol: "https",
+        hostname: "github.com",
+      },
     ],
   },
 };
